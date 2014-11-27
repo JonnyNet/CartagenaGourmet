@@ -1,0 +1,1000 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="DB_68219_gourmetModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Categorias">
+          <Key>
+            <PropertyRef Name="id_categoria" />
+          </Key>
+          <Property Name="id_categoria" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="descripcion" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="nit" Type="int" Nullable="false" />
+          <Property Name="fotoid" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Comidas">
+          <Key>
+            <PropertyRef Name="id_comida" />
+          </Key>
+          <Property Name="id_comida" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="descripcion" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="id_categoria" Type="int" Nullable="false" />
+          <Property Name="Idprecio" Type="int" Nullable="false" />
+          <Property Name="id_foto" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Detalles">
+          <Key>
+            <PropertyRef Name="id_detalle" />
+          </Key>
+          <Property Name="id_detalle" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_comida" Type="int" Nullable="false" />
+          <Property Name="valor" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="cantidad" Type="smallint" Nullable="false" />
+          <Property Name="id_pedido" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Foto">
+          <Key>
+            <PropertyRef Name="id_foto" />
+          </Key>
+          <Property Name="id_foto" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="img_foto" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Imegenes">
+          <Key>
+            <PropertyRef Name="nit" />
+          </Key>
+          <Property Name="nit" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="logo" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="foto_perfil" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="foto1" Type="nvarchar(max)" />
+          <Property Name="foto2" Type="nvarchar(max)" />
+          <Property Name="foto3" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Mesas">
+          <Key>
+            <PropertyRef Name="id_mesa" />
+          </Key>
+          <Property Name="id_mesa" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="sillas" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="tipo" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="id_sala" Type="int" Nullable="false" />
+          <Property Name="id_foto" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Pedidos">
+          <Key>
+            <PropertyRef Name="id_pedido" />
+          </Key>
+          <Property Name="id_pedido" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_servicio" Type="int" Nullable="false" />
+          <Property Name="estado" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="fecha" Type="datetime" Nullable="false" />
+          <Property Name="iva" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="total" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="subtotal" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="nit" Type="int" Nullable="false" />
+          <Property Name="cedula" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Precios">
+          <Key>
+            <PropertyRef Name="id_precio" />
+          </Key>
+          <Property Name="id_precio" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="precio" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="iva" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Reservas">
+          <Key>
+            <PropertyRef Name="id_reserva" />
+          </Key>
+          <Property Name="id_reserva" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_sala" Type="int" Nullable="false" />
+          <Property Name="id_mesa" Type="int" Nullable="false" />
+          <Property Name="facha" Type="datetime" Nullable="false" />
+          <Property Name="estado" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="cedula" Type="int" Nullable="false" />
+          <Property Name="nit" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Restaurantes">
+          <Key>
+            <PropertyRef Name="nit" />
+          </Key>
+          <Property Name="nit" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="direccion" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="slogan" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="puntuacion" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="tenedor" Type="smallint" />
+          <Property Name="fecha" Type="datetime" Nullable="false" />
+          <Property Name="user_cedula" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Salas">
+          <Key>
+            <PropertyRef Name="id_sala" />
+          </Key>
+          <Property Name="id_sala" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="ambiente" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="estado" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="nit" Type="int" Nullable="false" />
+          <Property Name="Foto_id_foto" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Servicios">
+          <Key>
+            <PropertyRef Name="id_servicio" />
+          </Key>
+          <Property Name="id_servicio" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="descripcion" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="nit" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="cedula" />
+          </Key>
+          <Property Name="cedula" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="apellidos" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="telefono" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="rol" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="nickname" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="password" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="fecha" Type="datetime" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_CategoriasComidas">
+          <End Role="Categorias" Type="Self.Categorias" Multiplicity="1" />
+          <End Role="Comidas" Type="Self.Comidas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categorias">
+              <PropertyRef Name="id_categoria" />
+            </Principal>
+            <Dependent Role="Comidas">
+              <PropertyRef Name="id_categoria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ComidasFoto">
+          <End Role="Foto" Type="Self.Foto" Multiplicity="1" />
+          <End Role="Comidas" Type="Self.Comidas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Foto">
+              <PropertyRef Name="id_foto" />
+            </Principal>
+            <Dependent Role="Comidas">
+              <PropertyRef Name="id_foto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ComidasPrecios">
+          <End Role="Precios" Type="Self.Precios" Multiplicity="1" />
+          <End Role="Comidas" Type="Self.Comidas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Precios">
+              <PropertyRef Name="id_precio" />
+            </Principal>
+            <Dependent Role="Comidas">
+              <PropertyRef Name="Idprecio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FotoCategorias">
+          <End Role="Foto" Type="Self.Foto" Multiplicity="1" />
+          <End Role="Categorias" Type="Self.Categorias" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Foto">
+              <PropertyRef Name="id_foto" />
+            </Principal>
+            <Dependent Role="Categorias">
+              <PropertyRef Name="fotoid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MesasFoto">
+          <End Role="Foto" Type="Self.Foto" Multiplicity="1" />
+          <End Role="Mesas" Type="Self.Mesas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Foto">
+              <PropertyRef Name="id_foto" />
+            </Principal>
+            <Dependent Role="Mesas">
+              <PropertyRef Name="id_foto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PedidosDetalles">
+          <End Role="Pedidos" Type="Self.Pedidos" Multiplicity="1" />
+          <End Role="Detalles" Type="Self.Detalles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pedidos">
+              <PropertyRef Name="id_pedido" />
+            </Principal>
+            <Dependent Role="Detalles">
+              <PropertyRef Name="id_pedido" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReservaRestaurante">
+          <End Role="Restaurantes" Type="Self.Restaurantes" Multiplicity="1" />
+          <End Role="Reservas" Type="Self.Reservas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Restaurantes">
+              <PropertyRef Name="nit" />
+            </Principal>
+            <Dependent Role="Reservas">
+              <PropertyRef Name="nit" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReservaUser">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Reservas" Type="Self.Reservas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="cedula" />
+            </Principal>
+            <Dependent Role="Reservas">
+              <PropertyRef Name="cedula" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RestauranteCategorias">
+          <End Role="Restaurantes" Type="Self.Restaurantes" Multiplicity="1" />
+          <End Role="Categorias" Type="Self.Categorias" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Restaurantes">
+              <PropertyRef Name="nit" />
+            </Principal>
+            <Dependent Role="Categorias">
+              <PropertyRef Name="nit" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RestaurantesImegenes">
+          <End Role="Restaurantes" Type="Self.Restaurantes" Multiplicity="1" />
+          <End Role="Imegenes" Type="Self.Imegenes" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Restaurantes">
+              <PropertyRef Name="nit" />
+            </Principal>
+            <Dependent Role="Imegenes">
+              <PropertyRef Name="nit" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SalasFoto">
+          <End Role="Foto" Type="Self.Foto" Multiplicity="1" />
+          <End Role="Salas" Type="Self.Salas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Foto">
+              <PropertyRef Name="id_foto" />
+            </Principal>
+            <Dependent Role="Salas">
+              <PropertyRef Name="Foto_id_foto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ServiciosRestaurantes">
+          <End Role="Restaurantes" Type="Self.Restaurantes" Multiplicity="1" />
+          <End Role="Servicios" Type="Self.Servicios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Restaurantes">
+              <PropertyRef Name="nit" />
+            </Principal>
+            <Dependent Role="Servicios">
+              <PropertyRef Name="nit" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserPedidos">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Pedidos" Type="Self.Pedidos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="cedula" />
+            </Principal>
+            <Dependent Role="Pedidos">
+              <PropertyRef Name="cedula" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DB_68219_gourmetModelStoreContainer">
+          <EntitySet Name="Categorias" EntityType="Self.Categorias" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Comidas" EntityType="Self.Comidas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Detalles" EntityType="Self.Detalles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Foto" EntityType="Self.Foto" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Imegenes" EntityType="Self.Imegenes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Mesas" EntityType="Self.Mesas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Pedidos" EntityType="Self.Pedidos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Precios" EntityType="Self.Precios" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Reservas" EntityType="Self.Reservas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Restaurantes" EntityType="Self.Restaurantes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Salas" EntityType="Self.Salas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Servicios" EntityType="Self.Servicios" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_CategoriasComidas" Association="Self.FK_CategoriasComidas">
+            <End Role="Categorias" EntitySet="Categorias" />
+            <End Role="Comidas" EntitySet="Comidas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ComidasFoto" Association="Self.FK_ComidasFoto">
+            <End Role="Foto" EntitySet="Foto" />
+            <End Role="Comidas" EntitySet="Comidas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ComidasPrecios" Association="Self.FK_ComidasPrecios">
+            <End Role="Precios" EntitySet="Precios" />
+            <End Role="Comidas" EntitySet="Comidas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FotoCategorias" Association="Self.FK_FotoCategorias">
+            <End Role="Foto" EntitySet="Foto" />
+            <End Role="Categorias" EntitySet="Categorias" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MesasFoto" Association="Self.FK_MesasFoto">
+            <End Role="Foto" EntitySet="Foto" />
+            <End Role="Mesas" EntitySet="Mesas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PedidosDetalles" Association="Self.FK_PedidosDetalles">
+            <End Role="Pedidos" EntitySet="Pedidos" />
+            <End Role="Detalles" EntitySet="Detalles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReservaRestaurante" Association="Self.FK_ReservaRestaurante">
+            <End Role="Restaurantes" EntitySet="Restaurantes" />
+            <End Role="Reservas" EntitySet="Reservas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReservaUser" Association="Self.FK_ReservaUser">
+            <End Role="User" EntitySet="User" />
+            <End Role="Reservas" EntitySet="Reservas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RestauranteCategorias" Association="Self.FK_RestauranteCategorias">
+            <End Role="Restaurantes" EntitySet="Restaurantes" />
+            <End Role="Categorias" EntitySet="Categorias" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RestaurantesImegenes" Association="Self.FK_RestaurantesImegenes">
+            <End Role="Restaurantes" EntitySet="Restaurantes" />
+            <End Role="Imegenes" EntitySet="Imegenes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SalasFoto" Association="Self.FK_SalasFoto">
+            <End Role="Foto" EntitySet="Foto" />
+            <End Role="Salas" EntitySet="Salas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ServiciosRestaurantes" Association="Self.FK_ServiciosRestaurantes">
+            <End Role="Restaurantes" EntitySet="Restaurantes" />
+            <End Role="Servicios" EntitySet="Servicios" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserPedidos" Association="Self.FK_UserPedidos">
+            <End Role="User" EntitySet="User" />
+            <End Role="Pedidos" EntitySet="Pedidos" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DB_68219_gourmetModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Categorias">
+          <Key>
+            <PropertyRef Name="id_categoria" />
+          </Key>
+          <Property Name="id_categoria" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="nit" Type="Int32" Nullable="false" />
+          <Property Name="fotoid" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Comidas" Relationship="Self.FK_CategoriasComidas" FromRole="Categorias" ToRole="Comidas" />
+          <NavigationProperty Name="Foto" Relationship="Self.FK_FotoCategorias" FromRole="Categorias" ToRole="Foto" />
+          <NavigationProperty Name="Restaurantes" Relationship="Self.FK_RestauranteCategorias" FromRole="Categorias" ToRole="Restaurantes" />
+        </EntityType>
+        <EntityType Name="Comidas">
+          <Key>
+            <PropertyRef Name="id_comida" />
+          </Key>
+          <Property Name="id_comida" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="id_categoria" Type="Int32" Nullable="false" />
+          <Property Name="Idprecio" Type="Int32" Nullable="false" />
+          <Property Name="id_foto" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Categorias" Relationship="Self.FK_CategoriasComidas" FromRole="Comidas" ToRole="Categorias" />
+          <NavigationProperty Name="Foto" Relationship="Self.FK_ComidasFoto" FromRole="Comidas" ToRole="Foto" />
+          <NavigationProperty Name="Precios" Relationship="Self.FK_ComidasPrecios" FromRole="Comidas" ToRole="Precios" />
+        </EntityType>
+        <EntityType Name="Detalles">
+          <Key>
+            <PropertyRef Name="id_detalle" />
+          </Key>
+          <Property Name="id_detalle" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_comida" Type="Int32" Nullable="false" />
+          <Property Name="valor" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="cantidad" Type="Int16" Nullable="false" />
+          <Property Name="id_pedido" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Pedidos" Relationship="Self.FK_PedidosDetalles" FromRole="Detalles" ToRole="Pedidos" />
+        </EntityType>
+        <EntityType Name="Foto">
+          <Key>
+            <PropertyRef Name="id_foto" />
+          </Key>
+          <Property Name="id_foto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="img_foto" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Categorias" Relationship="Self.FK_FotoCategorias" FromRole="Foto" ToRole="Categorias" />
+          <NavigationProperty Name="Comidas" Relationship="Self.FK_ComidasFoto" FromRole="Foto" ToRole="Comidas" />
+          <NavigationProperty Name="Mesas" Relationship="Self.FK_MesasFoto" FromRole="Foto" ToRole="Mesas" />
+          <NavigationProperty Name="Salas" Relationship="Self.FK_SalasFoto" FromRole="Foto" ToRole="Salas" />
+        </EntityType>
+        <EntityType Name="Imegenes">
+          <Key>
+            <PropertyRef Name="nit" />
+          </Key>
+          <Property Name="nit" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="logo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="foto_perfil" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="foto1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="foto2" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="foto3" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Restaurantes" Relationship="Self.FK_RestaurantesImegenes" FromRole="Imegenes" ToRole="Restaurantes" />
+        </EntityType>
+        <EntityType Name="Mesas">
+          <Key>
+            <PropertyRef Name="id_mesa" />
+          </Key>
+          <Property Name="id_mesa" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="sillas" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="tipo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="id_sala" Type="Int32" Nullable="false" />
+          <Property Name="id_foto" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Foto" Relationship="Self.FK_MesasFoto" FromRole="Mesas" ToRole="Foto" />
+          <NavigationProperty Name="Salas" Relationship="DB_68219_gourmetModel.SalasMesas" FromRole="Mesas" ToRole="Salas" />
+        </EntityType>
+        <EntityType Name="Pedidos">
+          <Key>
+            <PropertyRef Name="id_pedido" />
+          </Key>
+          <Property Name="id_pedido" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_servicio" Type="Int32" Nullable="false" />
+          <Property Name="estado" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="fecha" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="iva" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="total" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="subtotal" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="nit" Type="Int32" Nullable="false" />
+          <Property Name="cedula" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Detalles" Relationship="Self.FK_PedidosDetalles" FromRole="Pedidos" ToRole="Detalles" />
+          <NavigationProperty Name="User" Relationship="Self.FK_UserPedidos" FromRole="Pedidos" ToRole="User" />
+          <NavigationProperty Name="Servicios" Relationship="DB_68219_gourmetModel.ServiciosPedidos" FromRole="Pedidos" ToRole="Servicios" />
+        </EntityType>
+        <EntityType Name="Precios">
+          <Key>
+            <PropertyRef Name="id_precio" />
+          </Key>
+          <Property Name="id_precio" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="precio" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="iva" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <NavigationProperty Name="Comidas" Relationship="Self.FK_ComidasPrecios" FromRole="Precios" ToRole="Comidas" />
+        </EntityType>
+        <EntityType Name="Reservas">
+          <Key>
+            <PropertyRef Name="id_reserva" />
+          </Key>
+          <Property Name="id_reserva" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_sala" Type="Int32" Nullable="false" />
+          <Property Name="id_mesa" Type="Int32" Nullable="false" />
+          <Property Name="facha" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="estado" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="cedula" Type="Int32" Nullable="false" />
+          <Property Name="nit" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Restaurantes" Relationship="Self.FK_ReservaRestaurante" FromRole="Reservas" ToRole="Restaurantes" />
+          <NavigationProperty Name="User" Relationship="Self.FK_ReservaUser" FromRole="Reservas" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Restaurantes">
+          <Key>
+            <PropertyRef Name="nit" />
+          </Key>
+          <Property Name="nit" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="direccion" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="slogan" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="puntuacion" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="tenedor" Type="Int16" />
+          <Property Name="fecha" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="user_cedula" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Categorias" Relationship="Self.FK_RestauranteCategorias" FromRole="Restaurantes" ToRole="Categorias" />
+          <NavigationProperty Name="Imegenes" Relationship="Self.FK_RestaurantesImegenes" FromRole="Restaurantes" ToRole="Imegenes" />
+          <NavigationProperty Name="Reservas" Relationship="Self.FK_ReservaRestaurante" FromRole="Restaurantes" ToRole="Reservas" />
+          <NavigationProperty Name="Servicios" Relationship="Self.FK_ServiciosRestaurantes" FromRole="Restaurantes" ToRole="Servicios" />
+          <NavigationProperty Name="User" Relationship="DB_68219_gourmetModel.RestaurantesUser" FromRole="Restaurantes" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Salas">
+          <Key>
+            <PropertyRef Name="id_sala" />
+          </Key>
+          <Property Name="id_sala" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ambiente" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="estado" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="nit" Type="Int32" Nullable="false" />
+          <Property Name="Foto_id_foto" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Foto" Relationship="Self.FK_SalasFoto" FromRole="Salas" ToRole="Foto" />
+          <NavigationProperty Name="Mesas" Relationship="DB_68219_gourmetModel.SalasMesas" FromRole="Salas" ToRole="Mesas" />
+        </EntityType>
+        <EntityType Name="Servicios">
+          <Key>
+            <PropertyRef Name="id_servicio" />
+          </Key>
+          <Property Name="id_servicio" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="nit" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Restaurantes" Relationship="Self.FK_ServiciosRestaurantes" FromRole="Servicios" ToRole="Restaurantes" />
+          <NavigationProperty Name="Pedidos" Relationship="DB_68219_gourmetModel.ServiciosPedidos" FromRole="Servicios" ToRole="Pedidos" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="cedula" />
+          </Key>
+          <Property Name="cedula" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="apellidos" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="telefono" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="rol" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="nickname" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="fecha" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Pedidos" Relationship="Self.FK_UserPedidos" FromRole="User" ToRole="Pedidos" />
+          <NavigationProperty Name="Reservas" Relationship="Self.FK_ReservaUser" FromRole="User" ToRole="Reservas" />
+          <NavigationProperty Name="Restaurantes" Relationship="DB_68219_gourmetModel.RestaurantesUser" FromRole="User" ToRole="Restaurantes" />
+        </EntityType>
+        <Association Name="FK_CategoriasComidas">
+          <End Role="Categorias" Type="Self.Categorias" Multiplicity="1" />
+          <End Role="Comidas" Type="Self.Comidas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categorias">
+              <PropertyRef Name="id_categoria" />
+            </Principal>
+            <Dependent Role="Comidas">
+              <PropertyRef Name="id_categoria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FotoCategorias">
+          <End Role="Foto" Type="Self.Foto" Multiplicity="1" />
+          <End Role="Categorias" Type="Self.Categorias" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Foto">
+              <PropertyRef Name="id_foto" />
+            </Principal>
+            <Dependent Role="Categorias">
+              <PropertyRef Name="fotoid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RestauranteCategorias">
+          <End Role="Restaurantes" Type="Self.Restaurantes" Multiplicity="1" />
+          <End Role="Categorias" Type="Self.Categorias" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Restaurantes">
+              <PropertyRef Name="nit" />
+            </Principal>
+            <Dependent Role="Categorias">
+              <PropertyRef Name="nit" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ComidasFoto">
+          <End Role="Foto" Type="Self.Foto" Multiplicity="1" />
+          <End Role="Comidas" Type="Self.Comidas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Foto">
+              <PropertyRef Name="id_foto" />
+            </Principal>
+            <Dependent Role="Comidas">
+              <PropertyRef Name="id_foto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ComidasPrecios">
+          <End Role="Precios" Type="Self.Precios" Multiplicity="1" />
+          <End Role="Comidas" Type="Self.Comidas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Precios">
+              <PropertyRef Name="id_precio" />
+            </Principal>
+            <Dependent Role="Comidas">
+              <PropertyRef Name="Idprecio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PedidosDetalles">
+          <End Role="Pedidos" Type="Self.Pedidos" Multiplicity="1" />
+          <End Role="Detalles" Type="Self.Detalles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pedidos">
+              <PropertyRef Name="id_pedido" />
+            </Principal>
+            <Dependent Role="Detalles">
+              <PropertyRef Name="id_pedido" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MesasFoto">
+          <End Role="Foto" Type="Self.Foto" Multiplicity="1" />
+          <End Role="Mesas" Type="Self.Mesas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Foto">
+              <PropertyRef Name="id_foto" />
+            </Principal>
+            <Dependent Role="Mesas">
+              <PropertyRef Name="id_foto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SalasFoto">
+          <End Role="Foto" Type="Self.Foto" Multiplicity="1" />
+          <End Role="Salas" Type="Self.Salas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Foto">
+              <PropertyRef Name="id_foto" />
+            </Principal>
+            <Dependent Role="Salas">
+              <PropertyRef Name="Foto_id_foto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RestaurantesImegenes">
+          <End Role="Restaurantes" Type="Self.Restaurantes" Multiplicity="1" />
+          <End Role="Imegenes" Type="Self.Imegenes" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Restaurantes">
+              <PropertyRef Name="nit" />
+            </Principal>
+            <Dependent Role="Imegenes">
+              <PropertyRef Name="nit" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserPedidos">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Pedidos" Type="Self.Pedidos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="cedula" />
+            </Principal>
+            <Dependent Role="Pedidos">
+              <PropertyRef Name="cedula" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReservaRestaurante">
+          <End Role="Restaurantes" Type="Self.Restaurantes" Multiplicity="1" />
+          <End Role="Reservas" Type="Self.Reservas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Restaurantes">
+              <PropertyRef Name="nit" />
+            </Principal>
+            <Dependent Role="Reservas">
+              <PropertyRef Name="nit" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReservaUser">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Reservas" Type="Self.Reservas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="cedula" />
+            </Principal>
+            <Dependent Role="Reservas">
+              <PropertyRef Name="cedula" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ServiciosRestaurantes">
+          <End Role="Restaurantes" Type="Self.Restaurantes" Multiplicity="1" />
+          <End Role="Servicios" Type="Self.Servicios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Restaurantes">
+              <PropertyRef Name="nit" />
+            </Principal>
+            <Dependent Role="Servicios">
+              <PropertyRef Name="nit" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DB_68219_gourmetEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Categorias" EntityType="Self.Categorias" />
+          <EntitySet Name="Comidas" EntityType="Self.Comidas" />
+          <EntitySet Name="Detalles" EntityType="Self.Detalles" />
+          <EntitySet Name="Foto" EntityType="Self.Foto" />
+          <EntitySet Name="Imegenes" EntityType="Self.Imegenes" />
+          <EntitySet Name="Mesas" EntityType="Self.Mesas" />
+          <EntitySet Name="Pedidos" EntityType="Self.Pedidos" />
+          <EntitySet Name="Precios" EntityType="Self.Precios" />
+          <EntitySet Name="Reservas" EntityType="Self.Reservas" />
+          <EntitySet Name="Restaurantes" EntityType="Self.Restaurantes" />
+          <EntitySet Name="Salas" EntityType="Self.Salas" />
+          <EntitySet Name="Servicios" EntityType="Self.Servicios" />
+          <EntitySet Name="User" EntityType="Self.User" />
+          <AssociationSet Name="FK_CategoriasComidas" Association="Self.FK_CategoriasComidas">
+            <End Role="Categorias" EntitySet="Categorias" />
+            <End Role="Comidas" EntitySet="Comidas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FotoCategorias" Association="Self.FK_FotoCategorias">
+            <End Role="Foto" EntitySet="Foto" />
+            <End Role="Categorias" EntitySet="Categorias" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RestauranteCategorias" Association="Self.FK_RestauranteCategorias">
+            <End Role="Restaurantes" EntitySet="Restaurantes" />
+            <End Role="Categorias" EntitySet="Categorias" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ComidasFoto" Association="Self.FK_ComidasFoto">
+            <End Role="Foto" EntitySet="Foto" />
+            <End Role="Comidas" EntitySet="Comidas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ComidasPrecios" Association="Self.FK_ComidasPrecios">
+            <End Role="Precios" EntitySet="Precios" />
+            <End Role="Comidas" EntitySet="Comidas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PedidosDetalles" Association="Self.FK_PedidosDetalles">
+            <End Role="Pedidos" EntitySet="Pedidos" />
+            <End Role="Detalles" EntitySet="Detalles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MesasFoto" Association="Self.FK_MesasFoto">
+            <End Role="Foto" EntitySet="Foto" />
+            <End Role="Mesas" EntitySet="Mesas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SalasFoto" Association="Self.FK_SalasFoto">
+            <End Role="Foto" EntitySet="Foto" />
+            <End Role="Salas" EntitySet="Salas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RestaurantesImegenes" Association="Self.FK_RestaurantesImegenes">
+            <End Role="Restaurantes" EntitySet="Restaurantes" />
+            <End Role="Imegenes" EntitySet="Imegenes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserPedidos" Association="Self.FK_UserPedidos">
+            <End Role="User" EntitySet="User" />
+            <End Role="Pedidos" EntitySet="Pedidos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReservaRestaurante" Association="Self.FK_ReservaRestaurante">
+            <End Role="Restaurantes" EntitySet="Restaurantes" />
+            <End Role="Reservas" EntitySet="Reservas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReservaUser" Association="Self.FK_ReservaUser">
+            <End Role="User" EntitySet="User" />
+            <End Role="Reservas" EntitySet="Reservas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ServiciosRestaurantes" Association="Self.FK_ServiciosRestaurantes">
+            <End Role="Restaurantes" EntitySet="Restaurantes" />
+            <End Role="Servicios" EntitySet="Servicios" />
+          </AssociationSet>
+          <AssociationSet Name="RestaurantesUser" Association="DB_68219_gourmetModel.RestaurantesUser">
+            <End Role="Restaurantes" EntitySet="Restaurantes" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+          <AssociationSet Name="SalasMesas" Association="DB_68219_gourmetModel.SalasMesas">
+            <End Role="Salas" EntitySet="Salas" />
+            <End Role="Mesas" EntitySet="Mesas" />
+          </AssociationSet>
+          <AssociationSet Name="ServiciosPedidos" Association="DB_68219_gourmetModel.ServiciosPedidos">
+            <End Role="Servicios" EntitySet="Servicios" />
+            <End Role="Pedidos" EntitySet="Pedidos" />
+          </AssociationSet>
+        </EntityContainer>
+        <Association Name="RestaurantesUser">
+          <End Type="DB_68219_gourmetModel.Restaurantes" Role="Restaurantes" Multiplicity="*" />
+          <End Type="DB_68219_gourmetModel.User" Role="User" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="cedula" />
+            </Principal>
+            <Dependent Role="Restaurantes">
+              <PropertyRef Name="user_cedula" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SalasMesas">
+          <End Type="DB_68219_gourmetModel.Salas" Role="Salas" Multiplicity="1" />
+          <End Type="DB_68219_gourmetModel.Mesas" Role="Mesas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Salas">
+              <PropertyRef Name="id_sala" />
+            </Principal>
+            <Dependent Role="Mesas">
+              <PropertyRef Name="id_sala" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ServiciosPedidos">
+          <End Type="DB_68219_gourmetModel.Servicios" Role="Servicios" Multiplicity="1" />
+          <End Type="DB_68219_gourmetModel.Pedidos" Role="Pedidos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Servicios">
+              <PropertyRef Name="id_servicio" />
+            </Principal>
+            <Dependent Role="Pedidos">
+              <PropertyRef Name="id_servicio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DB_68219_gourmetModelStoreContainer" CdmEntityContainer="DB_68219_gourmetEntities">
+          <EntitySetMapping Name="Categorias">
+            <EntityTypeMapping TypeName="DB_68219_gourmetModel.Categorias">
+              <MappingFragment StoreEntitySet="Categorias">
+                <ScalarProperty Name="id_categoria" ColumnName="id_categoria" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="nit" ColumnName="nit" />
+                <ScalarProperty Name="fotoid" ColumnName="fotoid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Comidas">
+            <EntityTypeMapping TypeName="DB_68219_gourmetModel.Comidas">
+              <MappingFragment StoreEntitySet="Comidas">
+                <ScalarProperty Name="id_comida" ColumnName="id_comida" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="id_categoria" ColumnName="id_categoria" />
+                <ScalarProperty Name="Idprecio" ColumnName="Idprecio" />
+                <ScalarProperty Name="id_foto" ColumnName="id_foto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Detalles">
+            <EntityTypeMapping TypeName="DB_68219_gourmetModel.Detalles">
+              <MappingFragment StoreEntitySet="Detalles">
+                <ScalarProperty Name="id_detalle" ColumnName="id_detalle" />
+                <ScalarProperty Name="id_comida" ColumnName="id_comida" />
+                <ScalarProperty Name="valor" ColumnName="valor" />
+                <ScalarProperty Name="cantidad" ColumnName="cantidad" />
+                <ScalarProperty Name="id_pedido" ColumnName="id_pedido" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Foto">
+            <EntityTypeMapping TypeName="DB_68219_gourmetModel.Foto">
+              <MappingFragment StoreEntitySet="Foto">
+                <ScalarProperty Name="id_foto" ColumnName="id_foto" />
+                <ScalarProperty Name="img_foto" ColumnName="img_foto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Imegenes">
+            <EntityTypeMapping TypeName="DB_68219_gourmetModel.Imegenes">
+              <MappingFragment StoreEntitySet="Imegenes">
+                <ScalarProperty Name="nit" ColumnName="nit" />
+                <ScalarProperty Name="logo" ColumnName="logo" />
+                <ScalarProperty Name="foto_perfil" ColumnName="foto_perfil" />
+                <ScalarProperty Name="foto1" ColumnName="foto1" />
+                <ScalarProperty Name="foto2" ColumnName="foto2" />
+                <ScalarProperty Name="foto3" ColumnName="foto3" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Mesas">
+            <EntityTypeMapping TypeName="DB_68219_gourmetModel.Mesas">
+              <MappingFragment StoreEntitySet="Mesas">
+                <ScalarProperty Name="id_mesa" ColumnName="id_mesa" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="sillas" ColumnName="sillas" />
+                <ScalarProperty Name="tipo" ColumnName="tipo" />
+                <ScalarProperty Name="id_sala" ColumnName="id_sala" />
+                <ScalarProperty Name="id_foto" ColumnName="id_foto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pedidos">
+            <EntityTypeMapping TypeName="DB_68219_gourmetModel.Pedidos">
+              <MappingFragment StoreEntitySet="Pedidos">
+                <ScalarProperty Name="id_pedido" ColumnName="id_pedido" />
+                <ScalarProperty Name="id_servicio" ColumnName="id_servicio" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="fecha" ColumnName="fecha" />
+                <ScalarProperty Name="iva" ColumnName="iva" />
+                <ScalarProperty Name="total" ColumnName="total" />
+                <ScalarProperty Name="subtotal" ColumnName="subtotal" />
+                <ScalarProperty Name="nit" ColumnName="nit" />
+                <ScalarProperty Name="cedula" ColumnName="cedula" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Precios">
+            <EntityTypeMapping TypeName="DB_68219_gourmetModel.Precios">
+              <MappingFragment StoreEntitySet="Precios">
+                <ScalarProperty Name="id_precio" ColumnName="id_precio" />
+                <ScalarProperty Name="precio" ColumnName="precio" />
+                <ScalarProperty Name="iva" ColumnName="iva" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Reservas">
+            <EntityTypeMapping TypeName="DB_68219_gourmetModel.Reservas">
+              <MappingFragment StoreEntitySet="Reservas">
+                <ScalarProperty Name="id_reserva" ColumnName="id_reserva" />
+                <ScalarProperty Name="id_sala" ColumnName="id_sala" />
+                <ScalarProperty Name="id_mesa" ColumnName="id_mesa" />
+                <ScalarProperty Name="facha" ColumnName="facha" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="cedula" ColumnName="cedula" />
+                <ScalarProperty Name="nit" ColumnName="nit" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Restaurantes">
+            <EntityTypeMapping TypeName="DB_68219_gourmetModel.Restaurantes">
+              <MappingFragment StoreEntitySet="Restaurantes">
+                <ScalarProperty Name="nit" ColumnName="nit" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="direccion" ColumnName="direccion" />
+                <ScalarProperty Name="slogan" ColumnName="slogan" />
+                <ScalarProperty Name="puntuacion" ColumnName="puntuacion" />
+                <ScalarProperty Name="tenedor" ColumnName="tenedor" />
+                <ScalarProperty Name="fecha" ColumnName="fecha" />
+                <ScalarProperty Name="user_cedula" ColumnName="user_cedula" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Salas">
+            <EntityTypeMapping TypeName="DB_68219_gourmetModel.Salas">
+              <MappingFragment StoreEntitySet="Salas">
+                <ScalarProperty Name="id_sala" ColumnName="id_sala" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="ambiente" ColumnName="ambiente" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="nit" ColumnName="nit" />
+                <ScalarProperty Name="Foto_id_foto" ColumnName="Foto_id_foto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Servicios">
+            <EntityTypeMapping TypeName="DB_68219_gourmetModel.Servicios">
+              <MappingFragment StoreEntitySet="Servicios">
+                <ScalarProperty Name="id_servicio" ColumnName="id_servicio" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="nit" ColumnName="nit" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="User">
+            <EntityTypeMapping TypeName="DB_68219_gourmetModel.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="cedula" ColumnName="cedula" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="apellidos" ColumnName="apellidos" />
+                <ScalarProperty Name="telefono" ColumnName="telefono" />
+                <ScalarProperty Name="rol" ColumnName="rol" />
+                <ScalarProperty Name="nickname" ColumnName="nickname" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="fecha" ColumnName="fecha" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
